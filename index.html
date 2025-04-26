@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thabeng Projects - Employee Portal</title>
+    <style>
+        :root {
+            --primary-green: #439322;
+            --secondary-green: #f0c000;
+            --accent-yellow: #f17901d7;
+            --white: #e9e7e7;
+            --black: #000000;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0000003b;
+            color: var(--black);
+        }
+        
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 80px;
+            margin-right: 0px;
+            justify-content: center;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        nav {
+            background-color: var(--secondary-green);
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary-green);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+        }
+        
+        .sidebar {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .widget {
+            margin-bottom: 30px;
+        }
+        
+        .widget-title {
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--accent-yellow);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .calendar th {
+            background-color: var(--secondary-green);
+            color: var(--white);
+        }
+        
+        .holiday {
+            background-color: var(--accent-yellow);
+            font-weight: bold;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .video-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-thumbnail {
+            height: 140px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+        
+        .video-info {
+            padding: 10px;
+        }
+        
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .video-duration {
+            color: #777;
+            font-size: 0.8em;
+        }
+        
+        form {
+            margin-top: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-green);
+        }
+        
+        .notice-board {
+            border: 1px solid #910808;
+            border-radius: 5px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .notice {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .notice:last-child {
+            border-bottom: none;
+        }
+        
+        .notice-date {
+            font-size: 0.8em;
+            color: #777;
+        }
+        
+        .notice-title {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        footer {
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Replace with actual logo -->
+            <img src="assets/images/logo1.png" alt="Thabeng Projects Logo">
+            
+             
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#training">Training Videos</a></li>
+            <li><a href="#Talk To HR">Talk To HR</a></li>
+            <li><a href="#calendar">Calendar</a></li>
+            <li><a href="#documents">Documents</a></li>
+            <li><a href="#notices">Notice Board</a></li>
+            <li><a href="#profile">My Profile</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title">Quick Links</h3>
+                <ul>
+                    <li><a href="#upload">Upload Document</a></li>
+                    <li><a href="#update-contact">Update Contact Info</a></li>
+                    <li><a href="#safety">Safety Guidelines</a></li>
+                    <li><a href="#policies">Company Policies</a></li>
+                </ul>
+            </div>
+            
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Enriched Context Generation</title>
+                <link rel="stylesheet" href="style.css">
+                <script src="script.js"></script>
+            </head>
+            <body>
+                <!-- Map container -->
+                <div id="map-container">
+                    <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID"></gmp-map>
+                </div>
+            
+                <!-- Script to handle events and update the map -->
+                <script src="app.js"></script>
+            </body>
+            </html>
+            
+            
+            <div class="widget">
+                <h3 class="widget-title">Emergency Contacts</h3>
+                <p>Site Manager: 071 123 4567</p>
+                <p>Safety Officer: 072 987 6543</p>
+                <p>HR Department: 011 555 1234</p>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <section id="dashboard" class="widget">
+                <h2 class="widget-title">Welcome to Your Portal</h2>
+                <p>This portal provides access to all the resources you need as a Thabeng Projects employee. Access training materials, view company notices, update your information, and more.</p>
+                
+                <div class="quick-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+                    <div style="background-color: var(--accent-yellow); color: white; padding: 15px; border-radius: 5px; text-align: center;">
+                        <h3>5</h3>
+                        <p>New Training Videos</p>
+                    </div>
+                    <div style="background-color: var(--accent-yellow); color: white; padding: 15px; border-radius: 5px; text-align: center;">
+                        <h3>3</h3>
+                        <p>Company Notices</p>
+                    </div>
+                    <div style="background-color: var(--accent-yellow); color: white; padding: 15px; border-radius: 5px; text-align: center;">
+                        <h3>1</h3>
+                        <p>Calendar</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="training" class="widget" style="display: none;">
+                <h2 class="widget-title">Training Videos</h2>
+                <p>Access our library of training and educational videos.</p>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">Video Thumbnail</div>
+                        <div class="video-info">
+                            <div class="video-title">Safety Procedures on Site</div>
+                            <div class="video-duration">15:23</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">Video Thumbnail</div>
+                        <div class="video-info">
+                            <div class="video-title">Equipment Maintenance</div>
+                            <div class="video-duration">22:10</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">Video Thumbnail</div>
+                        <div class="video-info">
+                            <div class="video-title">New Construction Techniques</div>
+                            <div class="video-duration">18:45</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">Video Thumbnail</div>
+                        <div class="video-info">
+                            <div class="video-title">First Aid Training</div>
+                            <div class="video-duration">25:30</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="Talk To HR" class="widget" style="display: none;">
+                <h2 class="widget-title">Form Submission</h2>
+                <p>You can lodge an anonymous suggestion, concern or complaint here unless you choose to not be anonymous. All submissions are confidential.</p>
+                
+                <form id="complaint-form">
+                    <div class="form-group">
+                        <label for="complaint-type"> Options</label>
+                        <select id="complaint-type" required>
+                            <option value="">Select a category</option>
+                            <option value="safety">Safety Concern</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="ethics">Ethical Concern</option>
+                            <option value="suggestion">Corporate Suggestion</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="complaint-details">Details (Remember to indicate if anonymous or not)</label>
+                        <textarea id="complaint-details" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit">Submit</button>
+                </form>
+                
+                <div id="complaint-confirmation" style="display: none; margin-top: 20px; padding: 15px; background-color: #dff0d8; border: 1px solid #d6e9c6; border-radius: 4px;">
+                    Your message has been submitted. Thank you!
+                </div>
+            </section>
+            
+            <section id="calendar" class="widget" style="display: none;">
+                <h2 class="widget-title">South African Holidays 2025</h2>
+                
+                <table class="calendar">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Holiday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Jan</td>
+                            <td>New Year's Day</td>
+                        </tr>
+                        <tr>
+                            <td>21 Mar</td>
+                            <td>Human Rights Day</td>
+                        </tr>
+                        <tr class="holiday">
+                            <td>7 Apr</td>
+                            <td>Good Friday</td>
+                        </tr>
+                        <tr class="holiday">
+                            <td>10 Apr</td>
+                            <td>Family Day</td>
+                        </tr>
+                        <tr>
+                            <td>27 Apr</td>
+                            <td>Freedom Day</td>
+                        </tr>
+                        <tr>
+                            <td>1 May</td>
+                            <td>Workers' Day</td>
+                        </tr>
+                        <tr>
+                            <td>16 Jun</td>
+                            <td>Youth Day</td>
+                        </tr>
+                        <tr>
+                            <td>9 Aug</td>
+                            <td>National Women's Day</td>
+                        </tr>
+                        <tr class="holiday">
+                            <td>24 Sep</td>
+                            <td>Heritage Day</td>
+                        </tr>
+                        <tr>
+                            <td>16 Dec</td>
+                            <td>Day of Reconciliation</td>
+                        </tr>
+                        <tr class="holiday">
+                            <td>25 Dec</td>
+                            <td>Christmas Day</td>
+                        </tr>
+                        <tr class="holiday">
+                            <td>26 Dec</td>
+                            <td>Day of Goodwill</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                
+            </section>
+            
+            <section id="documents" class="widget" style="display: none;">
+                <h2 class="widget-title">Document Management</h2>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3>Upload Documents</h3>
+                    <form id="upload-form">
+                        <div class="form-group">
+                            <label for="document-type">Document Type</label>
+                            <select id="document-type" required>
+                                <option value="">Select document type</option>
+                                <option value="timesheet">Timesheet</option>
+                                <option value="report">Report</option>
+                                <option value="expense">Expense Form</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="file-upload">Select File</label>
+                            <input type="file" id="file-upload" accept=".doc,.docx,.xls,.xlsx,.pdf" required>
+                        </div>
+                        
+                        <button type="submit">Upload Document</button>
+                    </form>
+                    
+                    <div id="upload-confirmation" style="display: none; margin-top: 20px; padding: 15px; background-color: #dff0d8; border: 1px solid #d6e9c6; border-radius: 4px;">
+                        Your document has been successfully uploaded.
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Recent Documents</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color: var(--secondary-green); color: white;">
+                                <th style="padding: 8px; text-align: left;">Name</th>
+                                <th style="padding: 8px; text-align: left;">Type</th>
+                                <th style="padding: 8px; text-align: left;">Date</th>
+                                <th style="padding: 8px; text-align: left;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 8px;">May_Timesheet.xlsx</td>
+                                <td style="padding: 8px;">Timesheet</td>
+                                <td style="padding: 8px;">31 May 2023</td>
+                                <td style="padding: 8px;"><a href="#">Download</a></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 8px;">Safety_Report.docx</td>
+                                <td style="padding: 8px;">Report</td>
+                                <td style="padding: 8px;">15 May 2023</td>
+                                <td style="padding: 8px;"><a href="#">Download</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="notices" class="widget" style="display: none;">
+                <h2 class="widget-title">Notice Board</h2>
+                
+                <div class="notice-board">
+                    <div class="notice">
+                        <div class="notice-date">15 June 2023</div>
+                        <div class="notice-title">Site Safety Inspection Next Week</div>
+                        <div class="notice-content">All teams should be prepared for the annual safety inspection on 22 June. Please review all safety protocols.</div>
+                    </div>
+                    
+                    <div class="notice">
+                        <div class="notice-date">5 June 2023</div>
+                        <div class="notice-title">New HR Policies</div>
+                        <div class="notice-content">Updated HR policies are now available in the Documents section. All employees must review them by the end of the month.</div>
+                    </div>
+                    
+                    <div class="notice">
+                        <div class="notice-date">1 June 2023</div>
+                        <div class="notice-title">Team Building Event</div>
+                        <div class="notice-content">Save the date for our annual team building event on 15 July at Kloofzicht Lodge.</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="profile" class="widget" style="display: none;">
+                <h2 class="widget-title">My Profile</h2>
+                
+                <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div style="background-color: #eee; height: 150px; display: flex; align-items: center; justify-content: center;">
+                        Profile Photo
+                    </div>
+                    <div>
+                        <h3>John Doe</h3>
+                        <p>Construction Supervisor</p>
+                        <p>Employee ID: TP-2021-0456</p>
+                        <p>Department: Construction</p>
+                    </div>
+                </div>
+                
+                <h3>Update Contact Information</h3>
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" value="071 234 5678" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" value="johndoe@thabengprojects.co.za" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergency-contact">Emergency Contact</label>
+                        <input type="text" id="emergency-contact" value="Jane Doe (Wife) - 072 345 6789" required>
+                    </div>
+                    
+                    <button type="submit">Update Information</button>
+                </form>
+                
+                <div id="profile-confirmation" style="display: none; margin-top: 20px; padding: 15px; background-color: #dff0d8; border: 1px solid #d6e9c6; border-radius: 4px;">
+                    Your profile information has been updated successfully.
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Thabeng Projects (Pty) Ltd - Carletonville, South Africa</p>
+        <p>For technical support, please contact IT Department at it-support@thabengprojects.co.za</p>
+    </footer>
+    
+    <script>
+        // Simple navigation between sections
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                
+                // Hide all sections
+                document.querySelectorAll('.main-content .widget').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show target section
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+        
+        // Show dashboard by default
+        document.getElementById('dashboard').style.display = 'block';
+        
+        // Form submissions
+        document.getElementById('complaint-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('complaint-confirmation').style.display = 'block';
+            this.reset();
+        });
+        
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('upload-confirmation').style.display = 'block';
+            this.reset();
+        });
+        
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('profile-confirmation').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('profile-confirmation').style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
