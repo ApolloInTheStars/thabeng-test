@@ -3,269 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thabeng Projects - Employee Portal</title>
-    <style>
-        :root {
-            --primary-green: #439322;
-            --secondary-green: #f0c000;
-            --accent-yellow: #f17901d7;
-            --white: #e9e7e7;
-            --black: #000000;
-        }
+    <title>Thabeng Projects - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="assets/images/logo1.png" alt="Company Logo" class="login-logo">
+            <h1>Employee Portal Login</h1>
+        </div>
         
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0000003b;
-            color: var(--black);
-        }
-        
-        header {
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo img {
-            height: 80px;
-            margin-right: 0px;
-            justify-content: center;
-        }
-        
-        .logo h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        
-        nav {
-            background-color: var(--secondary-green);
-            padding: 10px 0;
-        }
-        
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        
-        nav li {
-            margin: 0 15px;
-        }
-        
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        nav a:hover {
-            background-color: var(--primary-green);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 20px;
-        }
-        
-        .sidebar {
-            background-color: var(--white);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .main-content {
-            background-color: var(--white);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .widget {
-            margin-bottom: 30px;
-        }
-        
-        .widget-title {
-            color: var(--primary-green);
-            border-bottom: 2px solid var(--accent-yellow);
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-        
-        .calendar {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .calendar th, .calendar td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        
-        .calendar th {
-            background-color: var(--secondary-green);
-            color: var(--white);
-        }
-        
-        .holiday {
-            background-color: var(--accent-yellow);
-            font-weight: bold;
-        }
-        
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .video-card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        
-        .video-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .video-thumbnail {
-            height: 140px;
-            background-color: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
-        
-        .video-info {
-            padding: 10px;
-        }
-        
-        .video-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .video-duration {
-            color: #777;
-            font-size: 0.8em;
-        }
-        
-        form {
-            margin-top: 15px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        
-        button {
-            background-color: var(--primary-green);
-            color: var(--white);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: var(--secondary-green);
-        }
-        
-        .notice-board {
-            border: 1px solid #910808;
-            border-radius: 5px;
-            padding: 15px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .notice {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .notice:last-child {
-            border-bottom: none;
-        }
-        
-        .notice-date {
-            font-size: 0.8em;
-            color: #777;
-        }
-        
-        .notice-title {
-            font-weight: bold;
-            margin: 5px 0;
-        }
-        
-        footer {
-            background-color: var(--primary-green);
-            color: var(--white);
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+        <form id="login-form" class="login-form">
+            <div class="form-group">
+                <label for="username">Employee ID</label>
+                <input type="text" id="username" required placeholder="Enter your employee ID">
+            </div>
             
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+            </div>
             
-            nav li {
-                margin: 5px 0;
-            }
-        }
+            <button type="submit" class="login-button">Sign In</button>
+            
+            <div id="login-error" class="error-message hidden">Invalid credentials</div>
+        </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
+
+<header>
+    <div class="logo">
+        <img src="assets/images/logo1.png" alt="Thabeng Projects Logo">
+        <h1>Employee Portal</h1>
+    </div>
+    <div class="header-controls">
+        <div id="current-time" class="time-display"></div>
+        <button id="logout-btn" class="logout-button">Logout</button>
+    </div>
+</header>
+     
+
+        
     </style>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width= 1.0, initial-scale=0.5">
+        <title>Calendar Integration</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        
+            
+            
+        
+        <div id="calendar-container">
+            <canvas id="calendar"></canvas>
+        </div>
+        
+        <div class="calendar-controls">
+            <input type="date" id="holiday-date">
+            <button id="save-btn">Save</button>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+    </html>
 </head>
 <body>
     <header>
         <div class="logo">
-            <!-- Replace with actual logo -->
-            <img src="assets/images/logo1.png" alt="Thabeng Projects Logo">
+          
             
-             
-        </div>
+            <div class="logo">
+                <img src="assets/images/logo1.png" alt="Thabeng Projects Logo">
+                <h1>Employee Portal</h1>
+            </div>
+            <div class="header-right">
+                <div id="datetime" class="datetime-display"></div>
+                <button id="logout-btn" class="logout-button">Logout</button>
+            </div>
     </header>
     
     <nav>
@@ -407,70 +228,71 @@
                     Your message has been submitted. Thank you!
                 </div>
             </section>
-            
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
             <section id="calendar" class="widget" style="display: none;">
-                <h2 class="widget-title">South African Holidays 2025</h2>
+                <h2 class="widget-title">Company Calendar</h2>
                 
-                <table class="calendar">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Holiday</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1 Jan</td>
-                            <td>New Year's Day</td>
-                        </tr>
-                        <tr>
-                            <td>21 Mar</td>
-                            <td>Human Rights Day</td>
-                        </tr>
-                        <tr class="holiday">
-                            <td>7 Apr</td>
-                            <td>Good Friday</td>
-                        </tr>
-                        <tr class="holiday">
-                            <td>10 Apr</td>
-                            <td>Family Day</td>
-                        </tr>
-                        <tr>
-                            <td>27 Apr</td>
-                            <td>Freedom Day</td>
-                        </tr>
-                        <tr>
-                            <td>1 May</td>
-                            <td>Workers' Day</td>
-                        </tr>
-                        <tr>
-                            <td>16 Jun</td>
-                            <td>Youth Day</td>
-                        </tr>
-                        <tr>
-                            <td>9 Aug</td>
-                            <td>National Women's Day</td>
-                        </tr>
-                        <tr class="holiday">
-                            <td>24 Sep</td>
-                            <td>Heritage Day</td>
-                        </tr>
-                        <tr>
-                            <td>16 Dec</td>
-                            <td>Day of Reconciliation</td>
-                        </tr>
-                        <tr class="holiday">
-                            <td>25 Dec</td>
-                            <td>Christmas Day</td>
-                        </tr>
-                        <tr class="holiday">
-                            <td>26 Dec</td>
-                            <td>Day of Goodwill</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                <!-- Add these to your <head> section -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
                 
+                <div id="calendar-container" style="margin: 20px 0;"></div>
+                
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Initialize the calendar only when the section is shown
+                    document.querySelector('nav a[href="#calendar"]').addEventListener('click', function() {
+                        if (!window.calendarInitialized) {
+                            var calendarEl = document.getElementById('calendar-container');
+                            var calendar = new FullCalendar.Calendar(calendarEl, {
+                                initialView: 'dayGridMonth',
+                                headerToolbar: {
+                                    left: 'prev,next today',
+                                    center: 'title',
+                                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                                },
+                                events: [
+                                    {
+                                        title: 'New Year\'s Day',
+                                        start: '2025-01-01',
+                                        color: '#ff9f89'
+                                    },
+                                    {
+                                        title: 'Human Rights Day',
+                                        start: '2025-03-21',
+                                        color: '#ff9f89'
+                                    },
+                                    {
+                                        title: 'Good Friday',
+                                        start: '2025-04-07',
+                                        color: '#ff9f89'
+                                    },
+                                    {
+                                        title: 'Family Day',
+                                        start: '2025-04-10',
+                                        color: '#ff9f89'
+                                    },
+                                    // Add all other holidays from your table
+                                    {
+                                        title: 'Freedom Day',
+                                        start: '2025-04-27',
+                                        color: '#ff9f89'
+                                    },
+                                    {
+                                        title: 'Workers\' Day',
+                                        start: '2025-05-01',
+                                        color: '#ff9f89'
+                                    },
+                                    // Continue with all other holidays...
+                                ]
+                            });
+                            calendar.render();
+                            window.calendarInitialized = true;
+                        }
+                    });
+                });
+                </script>
             </section>
             
             <section id="documents" class="widget" style="display: none;">
